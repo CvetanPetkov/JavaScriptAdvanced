@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Town by Name</title>
+    <style>select, input {
+        width: 100px
+    }</style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body onload="attachEvents()">
+
+<div>Towns</div>
+
+<select id="towns" size="4">
+    <option>Sofia</option>
+    <option>Varna</option>
+    <option>Pleven</option>
+    <option>Varna</option>
+</select>
+
+<div>
+    <input type="text" id="townName"/>
+    <button id="btnDelete">Delete</button>
+</div>
+
+<div id="result"></div>
+
+<script>
+    function attachEvents() {
+        let button = $('#btnDelete');
+        let value = $('#townName');
+        let towns = $('#towns');//$('#towns option');
+        let result = $('#result');
+        let isRemoved = false;
+
+//        button.on('click', function () {
+//            if (value.val().length > 0) {
+//                if ($(`#towns option:contains('${value.val()}')`).length != 0) {
+//                    $(towns).remove(`:contains('${value.val()}')`);
+//                    result.text(`${value.val()} deleted.`);
+//                } else {
+//                    result.text(`${value.val()} not found.`);
+//                }
+//            } else {
+//                result.text(`${value.val()} not found.`);
+//            }
+//            value.val('');
+//        });
+
+        button.on('click', function () {
+            for (let town of towns.child()) {
+                if ($(town).text() == value.val()) {
+                    $(town).remove();
+                    isRemoved = true;
+                }
+            }
+            if (isRemoved) {
+                result.text(`${value.val()} deleted.`);
+            } else {
+                result.text(`${value.val()} not found.`);
+            }
+            isRemoved = false;
+            value.val('');
+        });
+    }
+</script>
+</body>
+</html>

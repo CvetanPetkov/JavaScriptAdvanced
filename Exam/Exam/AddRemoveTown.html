@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add / Remove Towns</title>
+    <style>select, input { width: 100px }</style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body onload="attachEvents()">
+
+<div>Towns</div>
+<select id="towns" size="4">
+    <option>Sofia</option>
+    <option>Varna</option>
+    <option>Pleven</option>
+</select>
+
+<button id="btnDelete">Delete</button>
+
+<div>
+    <input type="text" id="newItem" />
+    <button id="btnAdd">Add</button>
+</div>
+
+<script>
+    function attachEvents() {
+        let towns = $('#towns');
+        let inputField = $('#newItem');
+
+        let buttonAdd = $('#btnAdd').on('click', function () {
+            let string = inputField.val();
+            if (string.length > 0) {
+                let newItem = $('<option>').text(string);
+                towns.append(newItem);
+                inputField.val('');
+            }
+        });
+
+
+//        $('#towns').change(function () {
+//            $('select option:selected').each(function () {
+//
+//                $('#btnDelete').on('click', function () {
+//                    fieldSelected = $('select option:selected').remove();
+//                    //fieldSelected.remove();
+//                });
+//            })
+//        });
+
+        $('#btnDelete').on('click', function () {
+            fieldSelected = $('select option:selected').remove();
+            //fieldSelected.remove();
+        });
+    }
+</script>
+</body>
+</html>
