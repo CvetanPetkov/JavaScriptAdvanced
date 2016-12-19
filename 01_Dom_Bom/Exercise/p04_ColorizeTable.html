@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04</title>
+</head>
+<body>
+<table>
+    <tr><th>Name</th><th>Town</th></tr>
+    <tr><td>Eve</td><td>Sofia</td></tr>
+    <tr><td>Nick</td><td>Varna</td></tr>
+    <tr><td>Didi</td><td>Ruse</td></tr>
+    <tr><td>Tedy</td><td>Varna</td></tr>
+</table>
+<button onclick="colorize()">Colorize</button>
+<script>
+    function colorize() {
+        for (let tr in document.querySelectorAll('table tr')) {  // obhojdam redovete i promenqm cveta na nechetnite
+            if (tr % 2 != 0) {  // rabotq vse edno s masiv i izvikvam s []
+                document.querySelectorAll('table tr')[tr].style.background = 'Teal';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
